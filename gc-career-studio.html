@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GC Career Studio — Career Strategy That Gets You Hired</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #14213D;
+    --ink-soft: #1F2E52;
+    --paper: #F7F6F3;
+    --paper-raised: #FFFFFF;
+    --charcoal: #23262B;
+    --slate: #5B6472;
+    --brass: #B8912E;
+    --brass-light: #E8D9A8;
+    --line: #DEDBD2;
+    --success: #3F7A5C;
+    --max-width: 1180px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--charcoal);
+    background: var(--paper);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .serif {
+    font-family: 'Fraunces', serif;
+    color: var(--ink);
+    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  img, svg { display: block; max-width: 100%; }
+
+  .wrap {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  button, .btn {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .btn-primary {
+    background: var(--brass);
+    color: var(--ink);
+    padding: 14px 26px;
+    border-radius: 3px;
+  }
+  .btn-primary:hover { background: #C9A438; transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    padding: 14px 22px;
+    border: 1px solid var(--ink);
+    border-radius: 3px;
+  }
+  .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+
+  .btn-ghost-light {
+    background: transparent;
+    color: var(--paper);
+    padding: 14px 22px;
+    border: 1px solid rgba(247,246,243,0.5);
+    border-radius: 3px;
+  }
+  .btn-ghost-light:hover { background: rgba(247,246,243,0.12); border-color: var(--paper); }
+
+  /* NAV */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(247,246,243,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+  }
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .logo span { color: var(--brass); }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+  .nav-links a {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--charcoal);
+  }
+  .nav-links a:hover { color: var(--brass); }
+  .nav-cta { display: none; }
+  .mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--ink);
+  }
+
+  @media (min-width: 861px) {
+    .nav-cta { display: inline-flex; }
+  }
+  @media (max-width: 860px) {
+    .nav-links {
+      position: fixed;
+      top: 66px;
+      left: 0;
+      right: 0;
+      background: var(--paper);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px 28px 28px;
+      gap: 18px;
+      border-bottom: 1px solid var(--line);
+      transform: translateY(-120%);
+      opacity: 0;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    .nav-links.open { transform: translateY(0); opacity: 1; }
+    .mobile-toggle { display: block; }
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 96px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.9fr;
+    gap: 60px;
+    align-items: end;
+  }
+  .eyebrow-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--brass-light);
+    font-size: 0.85rem;
+    margin-bottom: 22px;
+  }
+  .eyebrow-line .rule { width: 28px; height: 1px; background: var(--brass-light); }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    color: var(--paper);
+    max-width: 15ch;
+  }
+  .hero p.lead {
+    margin-top: 22px;
+    font-size: 1.1rem;
+    color: #C7CCDA;
+    max-width: 46ch;
+  }
+  .hero-actions {
+    margin-top: 34px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .hero-stats {
+    border-left: 1px solid rgba(247,246,243,0.25);
+    padding-left: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+  .hero-stats .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.1rem;
+    color: var(--brass-light);
+  }
+  .hero-stats .stat-label {
+    font-size: 0.88rem;
+    color: #A9B0C2;
+    margin-top: 2px;
+  }
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-stats {
+      border-left: none;
+      border-top: 1px solid rgba(247,246,243,0.25);
+      padding-left: 0;
+      padding-top: 24px;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  section { padding: 88px 0; }
+  .section-head { max-width: 640px; margin-bottom: 52px; }
+  .section-head .kicker {
+    color: var(--brass);
+    font-weight: 600;
+    font-size: 0.88rem;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .section-head h2 { font-size: clamp(1.8rem, 3.4vw, 2.4rem); }
+  .section-head p { color: var(--slate); margin-top: 14px; font-size: 1.05rem; }
+
+  /* PROBLEM / SOLUTION */
+  .ps-list { border-top: 1px solid var(--line); }
+  .ps-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .ps-row .col-label { font-size: 0.82rem; color: var(--slate); font-weight: 600; margin-bottom: 8px; }
+  .ps-row .problem h3, .ps-row .solution h3 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1.08rem; color: var(--charcoal); }
+  .ps-row .solution h3 { color: var(--ink); }
+  @media (max-width: 700px) {
+    .ps-row { grid-template-columns: 1fr; gap: 12px; }
+  }
+
+  /* SERVICES */
+  .services-list { display: flex; flex-direction: column; }
+  .service-row {
+    display: grid;
+    grid-template-columns: 0.9fr 1.6fr;
+    gap: 48px;
+    padding: 40px 0;
+    border-top: 1px solid var(--line);
+    align-items: start;
+  }
+  .service-row:last-child { border-bottom: 1px solid var(--line); }
+  .service-row h3 { font-size: 1.5rem; }
+  .service-row .desc { color: var(--slate); margin-top: 14px; max-width: 55ch; }
+  .service-row .outcome {
+    margin-top: 16px;
+    font-size: 0.92rem;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .service-row a.cta {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--brass);
+    border-bottom: 1px solid var(--brass);
+    padding-bottom: 2px;
+  }
+  @media (max-width: 780px) {
+    .service-row { grid-template-columns: 1fr; gap: 12px; }
+  }
+
+  /* HOW IT WORKS */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+  }
+  .step { padding-top: 20px; border-top: 2px solid var(--ink); }
+  .step .num { font-family: 'Fraunces', serif; font-size: 1.6rem; color: var(--brass); }
+  .step h3 { font-size: 1.05rem; margin-top: 10px; }
+  .step p { color: var(--slate); font-size: 0.92rem; margin-top: 8px; }
+  @media (max-width: 940px) {
+    .steps { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .steps { grid-template-columns: 1fr; }
+  }
+
+  /* TESTIMONIALS */
+  .testimonials-wrap { background: var(--ink); color: var(--paper); }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .testimonial blockquote {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--paper);
+  }
+  .testimonial .attribution {
+    margin-top: 18px;
+    font-size: 0.88rem;
+    color: #A9B0C2;
+  }
+  @media (max-width: 900px) {
+    .testimonials-grid { grid-template-columns: 1fr; gap: 36px; }
+  }
+
+  /* BOOKING FORM */
+  .book-wrap {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 60px;
+  }
+  .book-info h2 { font-size: clamp(1.8rem, 3.4vw, 2.3rem); }
+  .book-info p { color: var(--slate); margin-top: 16px; max-width: 42ch; }
+  .book-info .contact-line {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    font-size: 0.92rem;
+    color: var(--slate);
+  }
+  .book-info .contact-line strong { color: var(--ink); display: block; margin-bottom: 4px; }
+
+  form.consult-form {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    padding: 36px;
+    border-radius: 4px;
+  }
+  .form-row { margin-bottom: 20px; }
+  .form-row label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 7px;
+  }
+  .form-row input, .form-row select, .form-row textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    background: var(--paper);
+    color: var(--charcoal);
+  }
+  .form-row input:focus, .form-row select:focus, .form-row textarea:focus {
+    outline: 2px solid var(--brass);
+    outline-offset: 1px;
+    border-color: var(--brass);
+  }
+  .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 560px) { .form-grid-2 { grid-template-columns: 1fr; } }
+  .form-error { color: #B23A3A; font-size: 0.82rem; margin-top: 6px; display: none; }
+  .form-row.has-error input, .form-row.has-error select, .form-row.has-error textarea { border-color: #B23A3A; }
+  .form-row.has-error .form-error { display: block; }
+  .submit-row { margin-top: 8px; }
+  .submit-row button { width: 100%; justify-content: center; padding: 15px; font-size: 1rem; }
+
+  .success-panel {
+    text-align: center;
+    padding: 40px 10px;
+  }
+  .success-panel .check {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--success);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 18px;
+    font-size: 1.4rem;
+  }
+  .success-panel h3 { font-size: 1.3rem; }
+  .success-panel p { color: var(--slate); margin-top: 10px; }
+
+  @media (max-width: 900px) {
+    .book-wrap { grid-template-columns: 1fr; }
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+    padding: 56px 0 32px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+  }
+  .footer-brand .logo { margin-bottom: 14px; }
+  .footer-brand p { color: var(--slate); font-size: 0.92rem; max-width: 32ch; }
+  .footer-col h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .footer-col a {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--slate);
+    margin-bottom: 10px;
+  }
+  .footer-col a:hover { color: var(--brass); }
+  .footer-bottom {
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.82rem;
+    color: var(--slate);
+  }
+  @media (max-width: 700px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+
+  .cta-band {
+    background: var(--brass-light);
+  }
+  .cta-band-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 52px 0;
+  }
+  .cta-band h2 { font-size: clamp(1.5rem, 3vw, 2rem); max-width: 20ch; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="logo">GC Career <span>Studio</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#about">About</a>
+      <a href="#book" class="btn btn-primary" style="display:inline-flex;">Book a consultation</a>
+    </div>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">☰</button>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow-line"><span class="rule"></span> Career strategy &amp; job search consulting</div>
+      <h1>Your resume isn't the problem. Your strategy is.</h1>
+      <p class="lead">GC Career Studio helps students, freshers, and working professionals build a resume that clears ATS filters, a LinkedIn presence that gets noticed, and a job search that actually converts into offers.</p>
+      <div class="hero-actions">
+        <a href="#book" class="btn btn-primary">Book a free consultation</a>
+        <a href="#how-it-works" class="btn btn-ghost-light">See how it works</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">1:1</div>
+        <div class="stat-label">Personalized consultations, not templates</div>
+      </div>
+      <div>
+        <div class="stat-num">ATS</div>
+        <div class="stat-label">Resumes built to pass applicant tracking systems</div>
+      </div>
+      <div>
+        <div class="stat-num">5</div>
+        <div class="stat-label">Core services, one connected strategy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="problems">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">The real challenge</span>
+      <h2>Most job searches fail quietly, long before the interview.</h2>
+      <p>You don't need more job boards. You need someone to tell you what's actually broken — and fix it with you.</p>
+    </div>
+    <div class="ps-list">
+      <div class="ps-row">
+        <div class="problem"><div class="col-label">The problem</div><h3>Your resume gets filtered out before a human ever sees it.</h3></div>
+        <div class="solution"><div class="col-label">What we do</div><h3>We rebuild it to be ATS-readable and outcome-focused.</h3></div>
+      </div>
+      <div class="ps-row">
+        <div class="problem"><div class="col-label">The problem</div><h3>Recruiters can't find you, and your profile doesn't say enough.</h3></div>
+        <div class="solution"><div class="col-label">What we do</div><h3>We rebuild your LinkedIn and personal brand around your goal.</h3></div>
+      </div>
+      <div class="ps-row">
+        <div class="problem"><div class="col-label">The problem</div><h3>You're applying everywhere with no clear targeting.</h3></div>
+        <div class="solution"><div class="col-label">What we do</div><h3>We build a focused job-search strategy around real fit.</h3></div>
+      </div>
+      <div class="ps-row">
+        <div class="problem"><div class="col-label">The problem</div><h3>Interviews don't convert into offers.</h3></div>
+        <div class="solution"><div class="col-label">What we do</div><h3>We run structured mock interviews and feedback loops.</h3></div>
+      </div>
+      <div class="ps-row">
+        <div class="problem"><div class="col-label">The problem</div><h3>You're not even sure what career direction is right.</h3></div>
+        <div class="solution"><div class="col-label">What we do</div><h3>We help you map direction before you spend months guessing.</h3></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">What we offer</span>
+      <h2>Five services. One connected strategy.</h2>
+      <p>Each service solves a specific part of the job search — and works better together.</p>
+    </div>
+    <div class="services-list">
+      <div class="service-row">
+        <h3>Resume Building</h3>
+        <div>
+          <p class="desc">We rewrite your resume from the ground up — structured for ATS systems and written to lead with outcomes, not job duties.</p>
+          <div class="outcome">Outcome: a resume that gets past filters and gets read.</div>
+          <a href="#book" class="cta">Start with your resume →</a>
+        </div>
+      </div>
+      <div class="service-row">
+        <h3>LinkedIn &amp; Personal Branding</h3>
+        <div>
+          <p class="desc">We reposition your profile so recruiters understand your value in seconds, and rebuild it to be found, not just viewed.</p>
+          <div class="outcome">Outcome: recruiters reach out to you, not the other way around.</div>
+          <a href="#book" class="cta">Fix my profile →</a>
+        </div>
+      </div>
+      <div class="service-row">
+        <h3>Job Search Strategy</h3>
+        <div>
+          <p class="desc">We help you target the right roles and companies instead of mass-applying, and build a weekly system you can actually follow.</p>
+          <div class="outcome">Outcome: fewer applications, higher response rates.</div>
+          <a href="#book" class="cta">Build my strategy →</a>
+        </div>
+      </div>
+      <div class="service-row">
+        <h3>Interview Preparation</h3>
+        <div>
+          <p class="desc">Structured mock interviews with direct feedback — behavioral, technical, and case-based — so you walk in prepared, not hopeful.</p>
+          <div class="outcome">Outcome: confident, structured answers under real pressure.</div>
+          <a href="#book" class="cta">Practice with an expert →</a>
+        </div>
+      </div>
+      <div class="service-row">
+        <h3>Career Direction &amp; Consultation</h3>
+        <div>
+          <p class="desc">One-on-one consultation to map out where you're headed — whether that's your first job, a transition, or an international move.</p>
+          <div class="outcome">Outcome: clarity before you commit months to the wrong path.</div>
+          <a href="#book" class="cta">Talk to an expert →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works" style="background:var(--paper-raised); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">How it works</span>
+      <h2>From first conversation to job offer.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">01</div>
+        <h3>Book a call</h3>
+        <p>Tell us where you are and where you want to go.</p>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <h3>Get a plan</h3>
+        <p>We map the exact services and sequence you need.</p>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <h3>Build together</h3>
+        <p>Resume, brand, and strategy — built with you, not for you.</p>
+      </div>
+      <div class="step">
+        <div class="num">04</div>
+        <h3>Practice</h3>
+        <p>Mock interviews until you're genuinely ready.</p>
+      </div>
+      <div class="step">
+        <div class="num">05</div>
+        <h3>Land the offer</h3>
+        <p>We stay with you through the finish line.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap" style="max-width: 780px;">
+    <span class="kicker">About GC Career Studio</span>
+    <h2 style="font-size: clamp(1.8rem, 3.4vw, 2.3rem); margin-top: 12px;">We treat your career like the serious decision it is.</h2>
+    <p style="color: var(--slate); margin-top: 20px; font-size: 1.05rem;">GC Career Studio was built for one reason: most career advice is generic, and most job seekers are left to figure out resumes, branding, and interviews on their own. We work closely with college students, freshers, and working professionals — including those pursuing career transitions or international opportunities — to replace guesswork with a clear, personalized plan. No templates. No recycled advice. Just a strategy built around your specific goal.</p>
+  </div>
+</section>
+
+<div class="testimonials-wrap">
+  <section>
+    <div class="wrap">
+      <div class="section-head" style="max-width: 600px;">
+        <span class="kicker" style="color: var(--brass-light);">In their words</span>
+        <h2 style="color: var(--paper);">People we've worked with.</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <blockquote>"I'd sent over 80 applications with no response. After we rebuilt my resume and LinkedIn, I had three interviews in two weeks."</blockquote>
+          <div class="attribution">— Final-year engineering student</div>
+        </div>
+        <div class="testimonial">
+          <blockquote>"I didn't need more job listings. I needed someone to tell me what was actually wrong with my approach."</blockquote>
+          <div class="attribution">— Marketing professional, career transition</div>
+        </div>
+        <div class="testimonial">
+          <blockquote>"The mock interviews changed everything. I walked in prepared instead of hoping I'd remember what to say."</blockquote>
+          <div class="attribution">— Software fresher</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section id="book">
+  <div class="wrap book-wrap">
+    <div class="book-info">
+      <span class="kicker">Get started</span>
+      <h2>Book a free consultation.</h2>
+      <p>Tell us a bit about where you are. We'll get back to you to schedule a call and map out the right next step — no obligation.</p>
+      <div class="contact-line">
+        <strong>Prefer to reach out directly?</strong>
+        hello@gccareerstudio.com
+      </div>
+    </div>
+
+    <div id="formContainer">
+      <form class="consult-form" id="consultForm" novalidate>
+        <div class="form-grid-2">
+          <div class="form-row" id="row-name">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" />
+            <div class="form-error">Please enter your name.</div>
+          </div>
+          <div class="form-row" id="row-email">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com" />
+            <div class="form-error">Please enter a valid email.</div>
+          </div>
+        </div>
+        <div class="form-grid-2">
+          <div class="form-row" id="row-phone">
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" />
+            <div class="form-error">Please enter a phone number.</div>
+          </div>
+          <div class="form-row" id="row-stage">
+            <label for="stage">Career stage</label>
+            <select id="stage" name="stage">
+              <option value="">Select one</option>
+              <option value="student">College student</option>
+              <option value="fresher">Fresher / recent graduate</option>
+              <option value="professional">Working professional</option>
+              <option value="transition">Career transition</option>
+              <option value="international">International opportunity</option>
+            </select>
+            <div class="form-error">Please select your career stage.</div>
+          </div>
+        </div>
+        <div class="form-row" id="row-challenge">
+          <label for="challenge">What's your biggest challenge right now?</label>
+          <textarea id="challenge" name="challenge" rows="3" placeholder="e.g. My resume isn't getting responses, I'm not sure what role to target..."></textarea>
+        </div>
+        <div class="form-row">
+          <label for="preferred_time">Preferred time for a call (optional)</label>
+          <input type="text" id="preferred_time" name="preferred_time" placeholder="e.g. Weekday evenings" />
+        </div>
+        <div class="submit-row">
+          <button type="submit" class="btn btn-primary">Book my free consultation</button>
+        </div>
+      </form>
+
+      <div class="success-panel" id="successPanel" style="display:none;">
+        <div class="check">✓</div>
+        <h3>Thanks — we've got your details.</h3>
+        <p>Our team will reach out within 1 business day to schedule your consultation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap cta-band-inner">
+    <h2>Ready to stop guessing and start moving?</h2>
+    <a href="#book" class="btn btn-ghost" style="border-color: var(--ink);">Talk to an expert</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">GC Career <span style="color: var(--brass);">Studio</span></div>
+        <p>Career strategy and job search consulting for students and professionals who want a plan, not a template.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#services">Services</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#about">About</a>
+        <a href="#book">Book a consultation</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:hello@gccareerstudio.com">hello@gccareerstudio.com</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 GC Career Studio. All rights reserved.</div>
+      <div>Built for career seekers who are ready to move.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const toggle = document.getElementById('mobileToggle');
+  const navLinks = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // Consultation form handling
+  const form = document.getElementById('consultForm');
+  const formContainer = document.getElementById('formContainer');
+  const successPanel = document.getElementById('successPanel');
+
+  function setError(rowId, show) {
+    const row = document.getElementById(rowId);
+    row.classList.toggle('has-error', show);
+  }
+
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const stage = document.getElementById('stage').value;
+    const challenge = document.getElementById('challenge').value.trim();
+    const preferredTime = document.getElementById('preferred_time').value.trim();
+
+    let valid = true;
+    setError('row-name', !name); if (!name) valid = false;
+    setError('row-email', !isValidEmail(email)); if (!isValidEmail(email)) valid = false;
+    setError('row-phone', !phone); if (!phone) valid = false;
+    setError('row-stage', !stage); if (!stage) valid = false;
+
+    if (!valid) return;
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    const lead = {
+      name, email, phone, stage, challenge, preferredTime,
+      status: 'new',
+      source: 'website',
+      created_at: new Date().toISOString()
+    };
+
+    try {
+      if (window.storage && window.storage.set) {
+        const key = 'leads:' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
+        await window.storage.set(key, JSON.stringify(lead), true);
+      }
+    } catch (err) {
+      console.error('Could not persist lead (continuing anyway):', err);
+    }
+
+    formContainer.querySelector('form').style.display = 'none';
+    successPanel.style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
